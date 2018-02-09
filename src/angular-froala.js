@@ -146,9 +146,11 @@
                     });
 
                     element.bind('$destroy', function () {
-                        element.off(ctrl.listeningEvents.join(" "));
-                        element.froalaEditor('destroy');
-                        element = null;
+                        if (element) {
+	                        element.off(ctrl.listeningEvents.join(" "));
+	                        element.froalaEditor('destroy');
+	                        element = null;
+                        }
                     });
                 };
 

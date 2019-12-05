@@ -126,6 +126,10 @@
           };
 
           ctrl.initListeners = function() {
+            if (!element) {
+              return;
+            }
+
             if (ctrl.options.immediateAngularModelUpdate) {
               ctrl.froalaEditor.events.on('keyup', function() {
                 scope.$evalAsync(ctrl.updateModelView);

@@ -87,7 +87,9 @@
                   ctrl.froalaEditor.undo.saveStep();
                 }
                 else if (ctrl.froalaEditor) {
-                  ctrl.froalaEditor.el.innerHTML = ngModel.$viewValue || '';
+                  setTimeout(function() {
+                    ctrl.froalaEditor.html.set(ngModel.$viewValue || '');
+                  });
                 }
               }
             };

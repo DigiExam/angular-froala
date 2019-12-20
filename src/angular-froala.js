@@ -62,6 +62,11 @@
 
             //Instruct ngModel how to update the froala editor
             ngModel.$render = function () {
+              if (ctrl.editorRendered) {
+                return;
+              }
+              ctrl.editorRendered = true;
+
               // Update special tags.
               if (specialTag) {
                 var tags = ngModel.$modelValue;
@@ -218,6 +223,7 @@
                 if (_ctrl.froalaEditor) {
                   _ctrl.froalaEditor.destroy();
                   _ctrl.editorInitialized = false;
+                  _ctrl.editorRendered = false;
                 }
               },
               getEditor: function() {
